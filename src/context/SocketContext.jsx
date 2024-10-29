@@ -13,7 +13,7 @@ export const SocketProvider = function ({ children }) {
 
     useEffect(function () {
         if (auth && auth.user) {
-            const socket = io('http://localhost:4000', {
+            const socket = io('https://chat-app-backend-lyart.vercel.app', {
                 query: {
                     userId: auth.user._id
                 }
