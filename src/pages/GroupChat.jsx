@@ -46,7 +46,7 @@ const GroupChat = () => {
     useEffect(function () {
         const fetchData = async function () {
             try {
-                const response = await fetch(`http://localhost:4000/singleGroup/${id}`, {
+                const response = await fetch(`https://chat-app-backend-lyart.vercel.app/singleGroup/${id}`, {
                     method: 'GET',
                     credentials: 'include'
                 })
@@ -72,7 +72,7 @@ const GroupChat = () => {
     const sendMessage = async function (e) {
         e.preventDefault()
         try {
-            const response = await fetch(`http://localhost:4000/sendMessage/${id}`, {
+            const response = await fetch(`https://chat-app-backend-lyart.vercel.app/sendMessage/${id}`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },

@@ -16,7 +16,7 @@ const Group = () => {
 
         const fetchData = async function () {
             try {
-                const response = await fetch('http://localhost:4000/allUsers', {
+                const response = await fetch('https://chat-app-backend-lyart.vercel.app/allUsers', {
                     method: 'GET',
                     credentials: 'include'
                 })
@@ -39,7 +39,7 @@ const Group = () => {
     useEffect(function () {
         const fetchData = async function () {
             try {
-                const response = await fetch('http://localhost:4000/getGroup', {
+                const response = await fetch('https://chat-app-backend-lyart.vercel.app/getGroup', {
                     method: 'GET',
                     credentials: 'include'
                 })
@@ -62,7 +62,7 @@ const Group = () => {
     const createGroup = async function (e) {
         e.preventDefault()
         try {
-            const response = await fetch('http://localhost:4000/createGroup', {
+            const response = await fetch('https://chat-app-backend-lyart.vercel.app/createGroup', {
                 method: 'POST',
                 credentials: 'include',
                 headers: { 'Content-Type': 'application/json' },
@@ -85,7 +85,7 @@ const Group = () => {
     console.log(groupId)
     const addMember = async function (id) {
         try {
-            const response = await fetch(`http://localhost:4000/addMembers/${groupId}/${id}`, {
+            const response = await fetch(`https://chat-app-backend-lyart.vercel.app/addMembers/${groupId}/${id}`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -114,7 +114,7 @@ const Group = () => {
     const groupDelete = async function (groupId) {
         console.log(groupId)
         try {
-            const response = await fetch(`http://localhost:4000/deleteGroup/${groupId}`, {
+            const response = await fetch(`https://chat-app-backend-lyart.vercel.app/deleteGroup/${groupId}`, {
                 method: 'DELETE',
                 credentials: 'include',
             })

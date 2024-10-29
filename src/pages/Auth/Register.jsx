@@ -18,7 +18,7 @@ const Register = () => {
     try {
       e.preventDefault();
       console.log('click')
-      const response = await fetch('http://localhost:4000/register', {
+      const response = await fetch('https://chat-app-backend-lyart.vercel.app/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, username, email, password, confirmPassword })

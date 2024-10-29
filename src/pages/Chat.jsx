@@ -59,7 +59,7 @@ const Chat = () => {
     useEffect(function () {
         const fetchData = async function () {
             try {
-                const response = await fetch('http://localhost:4000/allUsers', {
+                const response = await fetch('https://chat-app-backend-lyart.vercel.app/allUsers', {
                     method: 'GET',
                     credentials: 'include'
                 })
@@ -83,7 +83,7 @@ const Chat = () => {
     const startConversation = async function (id) {
         setReceiverId(id)
         try {
-            const response = await fetch(`http://localhost:4000/get/${id}`, {
+            const response = await fetch(`https://chat-app-backend-lyart.vercel.app/get/${id}`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -95,7 +95,7 @@ const Chat = () => {
             toast.success('Conversation fetched')
             setConversation(result)
 
-            const response1 = await fetch(`http://localhost:4000/single/${id}`, {
+            const response1 = await fetch(`https://chat-app-backend-lyart.vercel.app/single/${id}`, {
                 method: 'GET',
                 credentials: 'include'
             })
@@ -123,7 +123,7 @@ const Chat = () => {
             formData.append('message', message)
             formData.append('mode', files ? "image" : "text")
 
-            const response = await fetch(`http://localhost:4000/sender/${id}`, {
+            const response = await fetch(`https://chat-app-backend-lyart.vercel.app/sender/${id}`, {
                 method: 'POST',
                 credentials: 'include',
                 body: formData

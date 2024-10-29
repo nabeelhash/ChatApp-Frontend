@@ -23,7 +23,7 @@ const Profile = () => {
         const fetchData = async function () {
             try {
                 console.log('click')
-                let response = await fetch('http://localhost:4000/current', {
+                let response = await fetch('https://chat-app-backend-lyart.vercel.app/current', {
                     method: 'GET',
                     headers: { "Content-Type": "application/json" },
                     credentials: 'include'
@@ -54,7 +54,7 @@ const Profile = () => {
             const formData = new FormData();
             formData.append('pic', file)
             // Upload the image to the server
-            let response = await fetch('http://localhost:4000/updatePic', {
+            let response = await fetch('https://chat-app-backend-lyart.vercel.app/updatePic', {
                 method: 'PATCH',
                 body: formData,
                 credentials: 'include',
@@ -72,10 +72,6 @@ const Profile = () => {
             toast.error('An error occurred');
         }
     }
-
-    const imgUrl = `http://localhost:4000/${img}`
-
-
 
 
     return (
