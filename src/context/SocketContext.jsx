@@ -1,50 +1,50 @@
-import { useContext } from "react";
-import { useEffect } from "react";
-import { useState } from "react";
-import { createContext } from "react";
-import { AuthContext } from "./Auth";
-import io from 'socket.io-client'
-export const SocketContext = createContext()
+// import { useContext } from "react";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import { createContext } from "react";
+// import { AuthContext } from "./Auth";
+// import io from 'socket.io-client'
+// export const SocketContext = createContext()
 
-export const SocketProvider = function ({ children }) {
-    const { auth, setAuth } = useContext(AuthContext)
-    const [socket, setSocket] = useState(null)
-    const [message, setMessage] = useState('')
+// export const SocketProvider = function ({ children }) {
+//     const { auth, setAuth } = useContext(AuthContext)
+//     const [socket, setSocket] = useState(null)
+//     const [message, setMessage] = useState('')
 
-    useEffect(function () {
-        if (auth && auth.user) {
-            const socket = io('https://chat-app-backend-lyart.vercel.app', {
-                query: {
-                    userId: auth.user._id
-                }
-            })
-            socket.on('connect', function () {
-                console.log(socket.id)
-            })
-            socket.emit('send_message', 'Hello my dosto');
+//     useEffect(function () {
+//         if (auth && auth.user) {
+//             const socket = io('https://chat-app-backend-lyart.vercel.app', {
+//                 query: {
+//                     userId: auth.user._id
+//                 }
+//             })
+//             socket.on('connect', function () {
+//                 console.log(socket.id)
+//             })
+//             socket.emit('send_message', 'Hello my dosto');
 
-            socket.on('receive', function (receive) {
-                console.log(receive)
-            })
-            socket.on('abc',function(msg){
-                console.log(msg)
-            })
+//             socket.on('receive', function (receive) {
+//                 console.log(receive)
+//             })
+//             socket.on('abc',function(msg){
+//                 console.log(msg)
+//             })
             
-            setSocket(socket)
+//             setSocket(socket)
 
 
-            // Cleanup on unmount or when auth changes
-            return () => {
-                socket.disconnect();
-                setSocket(null);
-            }
-        };
+//             // Cleanup on unmount or when auth changes
+//             return () => {
+//                 socket.disconnect();
+//                 setSocket(null);
+//             }
+//         };
 
-    }, [auth])
+//     }, [auth])
 
-    return (
-        <SocketContext.Provider value={{ socket, message, setMessage }}>
-            {children}
-        </SocketContext.Provider>
-    )
-}
+//     return (
+//         <SocketContext.Provider value={{ socket, message, setMessage }}>
+//             {children}
+//         </SocketContext.Provider>
+//     )
+// }

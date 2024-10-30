@@ -14,7 +14,7 @@ const GroupChat = () => {
     const [message, setMessage] = useState([])
     const [text, setText] = useState('')
     const { auth, setAuth } = useContext(AuthContext)
-    const { socket } = useContext(SocketContext)
+    // const { socket } = useContext(SocketContext)
 
 
     const messagesEndRef = useRef(null);
@@ -27,21 +27,21 @@ const GroupChat = () => {
     }, [message]);
 
 
-    useEffect(function () {
-        if (socket) {
-            socket.on('groupIncomingMessage', function (msg) {
-                console.log('Message from server:', msg);
+    // useEffect(function () {
+    //     if (socket) {
+    //         socket.on('groupIncomingMessage', function (msg) {
+    //             console.log('Message from server:', msg);
 
-                setMessage((prev) => [...prev, msg]);
+    //             setMessage((prev) => [...prev, msg]);
 
-            });
+    //         });
 
-            // Cleanup the event listener on unmount
-            return () => {
-                socket.off('return');
-            };
-        }
-    }, [socket])
+    //         // Cleanup the event listener on unmount
+    //         return () => {
+    //             socket.off('return');
+    //         };
+    //     }
+    // }, [socket])
 
     useEffect(function () {
         const fetchData = async function () {
@@ -82,7 +82,7 @@ const GroupChat = () => {
                 console.log('Something went wrong')
             }
             const result = await response.json();
-            socket.emit('groupNewMessage', result.latestMessage)
+            // socket.emit('groupNewMessage', result.latestMessage)
 
             console.log('result', result.latestMessage)
             setMessage(prev => [...prev, result.latestMessage])

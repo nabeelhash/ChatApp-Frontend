@@ -19,7 +19,7 @@ const Chat = () => {
     const [userSearch, setUserSearch] = useState('');
     const [mode, setMode] = useState('text')
     const [files, setFiles] = useState(null)
-    const { socket } = useContext(SocketContext)
+    // const { socket } = useContext(SocketContext)
     const navigate = useNavigate()
 
     const messagesEndRef = useRef(null);
@@ -37,24 +37,24 @@ const Chat = () => {
         }
     },[auth])
 
-    useEffect(function () {
-        if (socket) {
-            socket.on('return', function (msg) {
-                console.log('Message from server:', msg);
-                // Here, you can update the conversation state with the new message
-                if (msg.senderId === receiverId) {
-                    // alert('compare')
-                    toast.success('New msg received')
-                    setConversation((prev) => [...prev, msg]);
-                }
-            });
+    // useEffect(function () {
+    //     if (socket) {
+    //         socket.on('return', function (msg) {
+    //             console.log('Message from server:', msg);
+    //             // Here, you can update the conversation state with the new message
+    //             if (msg.senderId === receiverId) {
+    //                 // alert('compare')
+    //                 toast.success('New msg received')
+    //                 setConversation((prev) => [...prev, msg]);
+    //             }
+    //         });
 
-            // Cleanup the event listener on unmount
-            return () => {
-                socket.off('return');
-            };
-        }
-    }, [socket, receiverId])
+    //         // Cleanup the event listener on unmount
+    //         return () => {
+    //             socket.off('return');
+    //         };
+    //     }
+    // }, [socket, receiverId])
 
     useEffect(function () {
         const fetchData = async function () {
@@ -133,7 +133,7 @@ const Chat = () => {
             }
             const result = await response.json();
             console.log(result)
-            socket.emit('newMessages', result)
+            // socket.emit('newMessages', result)
 
             const addValue = [...conversation, result]
             setConversation(addValue)

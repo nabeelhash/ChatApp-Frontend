@@ -14,14 +14,14 @@ import { AuthProvider } from './context/Auth';
 import Chat from './pages/Chat';
 import Group from './pages/Group';
 import GroupChat from './pages/GroupChat';
-import { SocketProvider } from './context/SocketContext';
+// import { SocketProvider } from './context/SocketContext';
 
 const App = () => {
 
 
     return (
         <AuthProvider>
-            <SocketProvider>
+            {/* <SocketProvider> */}
                 <BrowserRouter>
                     <Toaster />
                     <Routes>
@@ -38,7 +38,7 @@ const App = () => {
                         <Route path='/groupChat/:id' element={<GroupChat />}></Route>
                     </Routes>
                 </BrowserRouter>
-            </SocketProvider>
+            {/* </SocketProvider> */}
         </AuthProvider>
     );
 };
