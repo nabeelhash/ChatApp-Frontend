@@ -14,7 +14,7 @@ const Navbar = () => {
     const handle = async function(e){
         try{
           e.preventDefault();
-          const response = await fetch('http://localhost:4000/logout',{
+          const response = await fetch('https://chat-app-backend-lyart.vercel.app/logout',{
             method: "GET",
             headers: {"Content-Type": "application/json"},
             credentials: 'include'
